@@ -30,22 +30,18 @@ header
 
         ul.header-desktop__links
             li
-                a(href="#") Замена личинки замка
+                a(href="#").autopsy-link Вскрытие автомобиля
             li
-                a(href="#") Замена замка зажигания
+                a(href="#").duplicate-link Сделать дубликат ключа
             li
-                a(href="#") Ремонт контактной группы
+                a(href="#").chip-link Изготовление чип ключей
             li
-                a(href="#") Механический замок
-            li
-                a(href="#") Электронный замок
-            li
-                a(href="#") Замена замка зажигания
+                a(href="#").repairs-link Ремонт замка зажигания
 
     .header-mobile
         .header-mobile__cont
             span Москва
-            a(href="tel:74951322575") +7 (495) 132-25-75   
+            a(href="tel:74954320777") +7 (495) 432-07-77   
 
         .header-mobile__menu
             .burger
@@ -57,9 +53,36 @@ header
 
             .logo-mob
                 .logo-mob__img
-                    img(src="img/logo-mob.png")
-                .header-mobile__title Ремонт замков зажигания
+                    img(src="img/logo.png")
+            
+            .points-icon
 
     .header-mobile__hidden
-                                         
+        form(action="#").search
+            label
+                input(type="text" placeholder="Название пирога, начинка")
+            
+        ul.main-menu.main-menu_mobile
+            li
+                a(href="#").main-menu__about О компании
+            li
+                a(href="#").main-menu__price Прайс-лист
+            li
+                a(href="#").main-menu__contact Контакты
+            li
+                .request-call
+                    a(href="#") Заказать звонок 
                     
+        .menu-about 
+            |Ремонт замков зажигания с 
+            span 2001 г                                                 
+        
+        ul.header-desktop__links.header-desktop__links_mob
+            li
+                a(href="#").autopsy-link Вскрытие автомобиля
+            li
+                a(href="#").duplicate-link Сделать дубликат ключа
+            li
+                a(href="#").chip-link Изготовление чип ключей
+            li
+                a(href="#").repairs-link Ремонт замка зажигания

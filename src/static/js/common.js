@@ -132,6 +132,48 @@ $(document).ready(function() {
         }
     });
 
+    var docSlider = $(".doc-slider");
+    docSlider.owlCarousel({
+        loop: true,
+        nav: true,
+        dots: true,
+        autoplay: false,
+        smartSpeed: 1000,
+        margin: 100,
+        center: false,
+        loop: false,
+        navText: ['<span class="nav-left"></span>', '<span class="nav-right"></span>'],
+        responsive: {
+            0: {
+                items: 1
+            },
+            320: {
+                items: 1
+            },
+            768: {
+                items: 2
+            }
+        }
+    });
+
+    var equipSlider = $(".equip-slider");
+    equipSlider.owlCarousel({
+        loop: true,
+        nav: true,
+        dots: true,
+        autoplay: false,
+        smartSpeed: 1000,
+        margin: 20,
+        center: false,
+        loop: false,
+        navText: ['<span class="nav-left"></span>', '<span class="nav-right"></span>'],
+        responsive: {
+            0: {
+                items: 1
+            }
+        }
+    });
+
     // advantage slider *
     // var advSlider = $(".advantages-slider");
     // advSlider.owlCarousel({

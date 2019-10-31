@@ -12,7 +12,7 @@ footer.footer
                     a(href="#") Заказать звонок            
     .container    
         ul.footer-main
-            li
+            li.footer-main__item
                 .footer__logo
                     img(src="img/logo.png")
                 
@@ -20,10 +20,14 @@ footer.footer
                     |Новый ключ за 1 час!
                 
                 .payment-card
-                    img(src="img/cards.png")
+                    .payment-card__img
+                        img(src="img/cards.png" width="135" height="28")
                     span Оплата по карте
+                
+                .metrica-mobile
+                    img(src="img/metr.jpg")
             
-            li
+            li.footer-main__item
                 ul.footer__nav
                     li
                         a(href="#").main-menu__about О компании
@@ -70,12 +74,15 @@ footer.footer
                             a(href="#") Выезд автоэлектрика
                         li
                             a(href="#") Снять секретки 
-            li
+                            
+            li.footer-main__item
                 ul.footer__info
                     li
-                        a(href="tel:84953606653") 8 495 360-66-53
+                        a(href="tel:84953606653").footer__call 8 495 360-66-53
                     li
-                        a(href="mailto:sale@bruschaty.ru") E-mail: sale@bruschaty.ru
+                        a(href="mailto:sale@bruschaty.ru").footer__email 
+                            |E-mail: 
+                            span sale@bruschaty.ru
                     li
                         .footer__time Ежедневно: с 9:00 - 21:00
                     li

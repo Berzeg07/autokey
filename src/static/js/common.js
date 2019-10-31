@@ -199,87 +199,75 @@ $(document).ready(function() {
     });
 
     // map Yandex *
-    ymaps.ready(init);
-
-    function init() {
-        var center = [55.753220, 37.715471];
-        var myMap = new ymaps.Map('map', {
-            controls: [],
-            center: center,
-            zoom: 12
-        }, {
-            searchControlProvider: 'yandex#search'
-        });
-        var myPlacemark = new ymaps.Placemark(center, {
-            balloonContent: 'Авиамоторная, 12',
-            hintContent: 'Авиамоторная, 12'
-        }, {
-            iconLayout: 'default#image'
-        });
-        myMap.geoObjects.add(myPlacemark);
-
-        $('.arrival-btn').click(function() {
-            var checkVal = $('.time-inp').val();
-            if (checkVal == '') {
-                var geolocation = ymaps.geolocation;
-                geolocation.get({
-                    provider: 'yandex',
-                    mapStateAutoApply: true
-                }).then(function(result) {
-                    // Получаем локацию пользователя при клике на иконку *
-                    var geoUser = result.geoObjects.position;
-
-                    var multiRoute = new ymaps.multiRouter.MultiRoute({
-                        referencePoints: [
-                            [55.753220, 37.715471],
-                            geoUser
-                        ],
-                        params: {
-                            routingMode: "auto",
-                            avoidTrafficJams: true
-                        }
-                    }, {
-                        boundsAutoApply: true,
-                    });
-                    // Добавление маршрута на карту.
-                    myMap.geoObjects.add(multiRoute);
-
-                    // Подписка на событие обновления данных маршрута.
-                    multiRoute.model.events.add('requestsuccess', function() {
-                        // Получение ссылки на активный маршрут.
-                        var activeRoute = multiRoute.getActiveRoute();
-                        // Вывод информации о маршруте.
-                        // console.log("Длина: " + activeRoute.properties.get("distance").text);
-                        // console.log("Время прохождения: " + activeRoute.properties.get("duration").text);
-                        $('.time-inp').val("Примерное время: " + activeRoute.properties.get("duration").text);
-                        // Для автомобильных маршрутов можно вывести
-                        // информацию о перекрытых участках.
-                        if (activeRoute.properties.get("blocked")) {
-                            console.log("На маршруте имеются участки с перекрытыми дорогами.");
-                        }
-                    });
-                    // Добавление маршрута на карту.
-                    myMap.geoObjects.add(multiRoute);
-                });
-            }
-            return;
-        });
-
-        if (window.matchMedia('(min-width: 768px)').matches) {
-            var zoomControl = new ymaps.control.ZoomControl({
-                options: {
-                    size: "small"
-                }
-            });
-            myMap.controls.add(zoomControl, {
-                position: {
-                    right: '40px',
-                    top: '180px'
-                }
-            });
-        }
-
-        myMap.behaviors.disable('scrollZoom');
-    }
+    // ymaps.ready(init);
+    //
+    // function init() {
+    //     var center = [55.753220, 37.715471];
+    //     var myMap = new ymaps.Map('map', {
+    //         controls: [],
+    //         center: center,
+    //         zoom: 12
+    //     }, {
+    //         searchControlProvider: 'yandex#search'
+    //     });
+    //     var myPlacemark = new ymaps.Placemark(center, {
+    //         balloonContent: 'Авиамоторная, 12',
+    //         hintContent: 'Авиамоторная, 12'
+    //     }, {
+    //         iconLayout: 'default#image'
+    //     });
+    //     myMap.geoObjects.add(myPlacemark);
+    //
+    //     $('.arrival-btn').click(function() {
+    //         var checkVal = $('.time-inp').val();
+    //         if (checkVal == '') {
+    //             var geolocation = ymaps.geolocation;
+    //             geolocation.get({
+    //                 provider: 'yandex',
+    //                 mapStateAutoApply: true
+    //             }).then(function(result) {
+    //                 var geoUser = result.geoObjects.position;
+    //                 var multiRoute = new ymaps.multiRouter.MultiRoute({
+    //                     referencePoints: [
+    //                         [55.753220, 37.715471],
+    //                         geoUser
+    //                     ],
+    //                     params: {
+    //                         routingMode: "auto",
+    //                         avoidTrafficJams: true
+    //                     }
+    //                 }, {
+    //                     boundsAutoApply: true,
+    //                 });
+    //                 myMap.geoObjects.add(multiRoute);
+    //                 multiRoute.model.events.add('requestsuccess', function() {
+    //                     var activeRoute = multiRoute.getActiveRoute();
+    //                     $('.time-inp').val("Примерное время: " + activeRoute.properties.get("duration").text);
+    //                     if (activeRoute.properties.get("blocked")) {
+    //                         console.log("На маршруте имеются участки с перекрытыми дорогами.");
+    //                     }
+    //                 });
+    //                 myMap.geoObjects.add(multiRoute);
+    //             });
+    //         }
+    //         return;
+    //     });
+    //
+    //     if (window.matchMedia('(min-width: 768px)').matches) {
+    //         var zoomControl = new ymaps.control.ZoomControl({
+    //             options: {
+    //                 size: "small"
+    //             }
+    //         });
+    //         myMap.controls.add(zoomControl, {
+    //             position: {
+    //                 right: '40px',
+    //                 top: '180px'
+    //             }
+    //         });
+    //     }
+    //
+    //     myMap.behaviors.disable('scrollZoom');
+    // }
 
 });

@@ -1,4 +1,22 @@
 $(document).ready(function() {
+
+    $('.tooltip-icon').hover(function() {
+        $(this).next().toggleClass('active');
+    });
+
+    $('.qa-block__btn').click(function() {
+        var $this = $(this);
+        var block = $this.parents('li').find('.qa-block__hidden');
+
+        if (!$this.hasClass("active")) {
+            $(".qa-block__hidden").slideUp();
+            $(".qa-block__btn").removeClass("active");
+        }
+
+        $this.toggleClass("active");
+        block.slideToggle();
+    });
+
     // Объект с данными моделей и URL *
     var carsObj = {
         Audi: {
@@ -83,6 +101,7 @@ $(document).ready(function() {
     modelSlider.owlCarousel({
         loop: true,
         nav: true,
+        dots: true,
         autoplay: false,
         smartSpeed: 1000,
         margin: 25,
@@ -96,7 +115,7 @@ $(document).ready(function() {
                 items: 1
             },
             375: {
-                items: 2
+                items: 3
             },
             768: {
                 items: 5
@@ -114,21 +133,21 @@ $(document).ready(function() {
     });
 
     // advantage slider *
-    var advSlider = $(".advantages-slider");
-    advSlider.owlCarousel({
-        loop: true,
-        nav: true,
-        autoplay: false,
-        smartSpeed: 1000,
-        margin: 25,
-        center: false,
-        navText: ['<span class="nav-left"></span>', '<span class="nav-right"></span>'],
-        responsive: {
-            0: {
-                items: 1
-            }
-        }
-    });
+    // var advSlider = $(".advantages-slider");
+    // advSlider.owlCarousel({
+    //     loop: true,
+    //     nav: true,
+    //     autoplay: false,
+    //     smartSpeed: 1000,
+    //     margin: 25,
+    //     center: false,
+    //     navText: ['<span class="nav-left"></span>', '<span class="nav-right"></span>'],
+    //     responsive: {
+    //         0: {
+    //             items: 1
+    //         }
+    //     }
+    // });
 
     // photo slider *
     var photoSlider = $(".photo-slider");
@@ -137,8 +156,8 @@ $(document).ready(function() {
         nav: true,
         autoplay: false,
         smartSpeed: 1000,
-        margin: 24,
-        center: false,
+        margin: 10,
+        center: true,
         navText: ['<span class="nav-left"></span>', '<span class="nav-right"></span>'],
         responsive: {
             0: {
@@ -149,54 +168,59 @@ $(document).ready(function() {
             },
             992: {
                 items: 4
+            },
+            1280: {
+                items: 5,
+                center: false,
+
             }
         }
     });
 
     // scroll request *
-    $(function() {
-        $("#callMaster").click(function() {
-            currentBlockoffset = $('.request').offset().top;
-            $("html, body").animate({
-                scrollTop: currentBlockoffset
-            }, 500);
-        });
-    });
-
-    $('.reviews-item__like button').click(function(){
-        $('.reviews-item__like button').removeClass('active');
-        $(this).addClass('active');
-    });
+    // $(function() {
+    //     $("#callMaster").click(function() {
+    //         currentBlockoffset = $('.request').offset().top;
+    //         $("html, body").animate({
+    //             scrollTop: currentBlockoffset
+    //         }, 500);
+    //     });
+    // });
+    //
+    // $('.reviews-item__like button').click(function(){
+    //     $('.reviews-item__like button').removeClass('active');
+    //     $(this).addClass('active');
+    // });
 
 
     // Calc price *
-    $('#calcBtn').click(function() {
-        $('.overlay').fadeIn();
-        $('.price-total').fadeIn();
-        $('body').addClass('hidden');
-        $('.close-icon').click(function() {
-            $('.overlay').fadeOut();
-            $('.price-total').fadeOut();
-            $('body').removeClass('hidden');
-        });
-        var car = $('.price-calc__title span').html();
-        var model = $('.price-calc__title i').html();
-        $('.about-work span').html(car);
-        $('.about-work i').html(model + ' ');
-
-        var selectedCountry = [];
-        var n = $(".calc-inp:checked").length;
-        if (n > 0) {
-            $(".calc-inp:checked").each(function() {
-                selectedCountry.push($(this).val());
-            });
-        }
-        var totalPrice = 0;
-        for (var i = 0; i < selectedCountry.length; i++) {
-            totalPrice = totalPrice + parseInt(selectedCountry[i]);
-        }
-        $('.price-total__title span i').html(totalPrice + ' руб.');
-    });
+    // $('#calcBtn').click(function() {
+    //     $('.overlay').fadeIn();
+    //     $('.price-total').fadeIn();
+    //     $('body').addClass('hidden');
+    //     $('.close-icon').click(function() {
+    //         $('.overlay').fadeOut();
+    //         $('.price-total').fadeOut();
+    //         $('body').removeClass('hidden');
+    //     });
+    //     var car = $('.price-calc__title span').html();
+    //     var model = $('.price-calc__title i').html();
+    //     $('.about-work span').html(car);
+    //     $('.about-work i').html(model + ' ');
+    //
+    //     var selectedCountry = [];
+    //     var n = $(".calc-inp:checked").length;
+    //     if (n > 0) {
+    //         $(".calc-inp:checked").each(function() {
+    //             selectedCountry.push($(this).val());
+    //         });
+    //     }
+    //     var totalPrice = 0;
+    //     for (var i = 0; i < selectedCountry.length; i++) {
+    //         totalPrice = totalPrice + parseInt(selectedCountry[i]);
+    //     }
+    //     $('.price-total__title span i').html(totalPrice + ' руб.');
+    // });
 
     // map Yandex *
     // ymaps.ready(init);

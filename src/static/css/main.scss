@@ -309,25 +309,29 @@ body.hidden {
     }
 }
 
+.map-wrap {
+    padding-top: 45px;
+}
+
 .map-block {
     max-width: 1920px;
     height: 420px;
     width: 100%;
     margin: 0 auto;
-    padding: 0 25px;
     position: relative;
     @media(min-width: 992px) {
-        margin: 0 auto 40px;
+        margin: 0 auto;
     }
 
     .arrival-calc {
         position: absolute;
         z-index: 10;
-        right: 0;
+        left: 50%;
+        transform: translateX(-50%);
         top: 20px;
         @media(min-width: 992px) {
             left: 134px;
-            top: 50%;
+            top: 37%;
             transform: translateY(-50%);
         }
     }
@@ -356,24 +360,23 @@ body.hidden {
 .arrival-calc {
     width: 320px;
     height: 216px;
-    color: white;
     font-size: 15px;
-    background: $color-title;
-    border-radius: 5px;
-    padding: 14px 16px 28px;
-    font-family: "Gilroy-Medium";
+    background: white;
+    padding: 13px 15px 28px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
     @media(min-width: 992px) {
         width: 340px;
-        height: 368px;
-        background: $color-title url('../img/mechanic-with-cap.png') no-repeat center bottom;
-        padding: 20px 23px 0;
+        height: 240px;
     }
 
     &__title {
-        margin-bottom: 35px;
+        font-family: "ProximaNova-Semibold";
+        margin-bottom: 20px;
         font-size: 12px;
+        color: #3C3A41;
+        border-bottom: 1px solid #D3D3D3;
         @media(min-width: 992px) {
-            font-size: 15px;
+            font-size: 16px;
             text-align: center;
         }
 
@@ -384,16 +387,6 @@ body.hidden {
             @media(min-width: 992px) {
                 display: inline-block;
             }
-
-            &:after {
-                content: '';
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                height: 1px;
-                background: white;
-            }
         }
     }
 
@@ -401,82 +394,49 @@ body.hidden {
         padding-left: 43px;
         margin-left: 12px;
         position: relative;
-        margin-bottom: 38px;
+        margin-bottom: 25px;
+        font-family: "ProximaNova-Semibold";
 
         &:after {
             content: 'А';
             position: absolute;
-            font-family: "Gilroy-Semibold";
-            font-size: 14px;
+            font-family: "ProximaNova-Bold";
+            font-size: 19px;
             left: 0;
+            color: white;
             top: -5px;
             text-align: center;
             padding-top: 4px;
             width: 29px;
             height: 29px;
-            background: $color-red2;
+            background: #4496E9;
             border-radius: 10em;
-        }
-
-        &:before {
-            content: '';
-            position: absolute;
-            left: -2px;
-            bottom: -34px;
-            width: 24px;
-            height: 24px;
-            background: url("../img/str.png") no-repeat center;
         }
     }
+}
 
-    label {
-        display: block;
-        width: 100%;
-        position: relative;
+.arrival-calc__total {
+    font-family: "ProximaNova-Semibold";
+    background: #FFF1A6;
+    border-radius: 30px;
+    padding: 5px 7px;
+    color: #3C3A41;
+    text-align: center;
+    margin-top: 20px;
+}
 
-        &:after {
-            content: 'B';
-            position: absolute;
-            width: 29px;
-            height: 29px;
-            left: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            text-align: center;
-            padding-top: 5px;
-            font-family: "Gilroy-Semibold";
-            font-size: 14px;
-            background: $color-blue2;
-            border-radius: 10em;
-        }
-
-        .arrival-btn {
-            position: absolute;
-            right: 6px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 30px;
-            height: 30px;
-            border-radius: 10em;
-            border: none;
-            background: url("../img/mess-icon.png") no-repeat center;
-            cursor: pointer;
-            transition: 0.5s;
-
-            &:hover {
-                background: $color-yellow url("../img/mess-icon.png") no-repeat center;
-            }
-        }
-
-        input {
-            width: 100%;
-            height: 44px;
-            font-size: 12px;
-            border: 2px solid $color-yellow;
-            padding-left: 46px;
-            padding-right: 34px;
-        }
-    }
+.arrival-btn {
+    font-family: "ProximaNova-Semibold";
+    width: 100%;
+    height: 52px;
+    text-align: center;
+    background: #FFF429;
+    color: #514158;
+    font-size: 18px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: 0.5s;
 }
 
 .search-master {
@@ -521,7 +481,7 @@ body.hidden {
             }
         }
         @media(min-width: 1280px) {
-            font-size: 45px;
+            font-size: 42px;
         }
     }
 
@@ -2264,7 +2224,7 @@ body.hidden {
         left: auto;
         top: 15px;
     }
-    @media(min-width: 1600px){
+    @media(min-width: 1600px) {
         height: 260px;
         right: 36px;
         background: url("../img/bigger-key.png") no-repeat 4px 4px;
@@ -2349,9 +2309,9 @@ body.hidden {
         }
         @media(min-width: 1600px) {
             &:first-child {
-
                 margin-right: 86px;
             }
+
             &:last-child {
                 padding: 0;
             }
@@ -2435,4 +2395,30 @@ body.hidden {
     font-size: 20px;
     text-transform: uppercase;
     cursor: pointer;
+}
+
+.more-service.container{
+    max-width: 1760px;
+}
+
+.more-service__list {
+    padding-top: 20px;
+    @media(min-width: 768px){
+        display: -webkit-flex;
+        display: -ms-flex;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    a {
+        display: inline-block;
+        color: #3D7AB6;
+        padding: 8px 34px;
+        border-radius: 5px;
+
+        &:hover {
+            color: white;
+            background: #535E8A;
+        }
+    }
 }
